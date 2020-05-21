@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tic Tac Toe layout made using a combination of relative layout and list views -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+            <!-- Center element -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@color/goodGrayTranslucent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_launcher_foreground"
+                android:tint="@color/colorAccent" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

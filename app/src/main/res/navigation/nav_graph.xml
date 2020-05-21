@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/game">
+
+    <fragment
+        android:id="@+id/game"
+        android:name="com.minar.tactoetic.Game"
+        android:label="Game"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_game_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.minar.tactoetic.Settings"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

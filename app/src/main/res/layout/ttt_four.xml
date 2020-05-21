@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tic Tac Toe layout made using relative layout and grid view -->
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:layout_margin="12dp"
+    android:columnCount="4"
+    android:rowCount="4" >
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+    <ImageView
+        android:layout_margin="4dp"
+        android:background="@color/goodGrayTranslucent"
+        android:contentDescription="@string/app_name"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:tint="@color/colorAccent" />
+
+</GridLayout>
