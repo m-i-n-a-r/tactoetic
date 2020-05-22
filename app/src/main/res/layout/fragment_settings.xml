@@ -18,7 +18,7 @@
         android:textColor="@color/goodGray"
         android:text="@string/settings"
         android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 
     <ImageView
         android:id="@+id/imageMinar"

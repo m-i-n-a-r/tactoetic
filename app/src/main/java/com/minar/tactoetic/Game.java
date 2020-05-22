@@ -69,6 +69,7 @@ public class Game extends androidx.fragment.app.Fragment {
         return v;
     }
 
+    // Set the board in a parametric way and manage the click actions
     private void setBoard(View v, ImageView[][] board) {
         TextView result = v.findViewById(R.id.resultGame);
         for (int i = 0; i < board[0].length; i++) {
@@ -76,13 +77,15 @@ public class Game extends androidx.fragment.app.Fragment {
                 String id = "i" + i + j;
                 int resId = getResources().getIdentifier(id, "id", requireActivity().getPackageName());
                 board[i][j] = v.findViewById(resId);
+                board[i][j].setImageDrawable(null);
+                boardValues[i][j] = 0;
                 int finalJ = j;
                 int finalI = i;
                 board[i][j].setOnClickListener((View view) -> {
+                    // Increase the turn number and disable the click on the selected element
                     turnNumber++;
+                    board[finalI][finalJ].setOnClickListener(null);
                     if(turnNumber % 2 == 0) {
-                        // Player 2 turn
-                        animateText(requireActivity().getString(R.string.player_two_turn), result);
                         // Vibrate
                         Activity act = getActivity();
                         if (act instanceof MainActivity) ((MainActivity) act).vibrate();
@@ -92,7 +95,10 @@ public class Game extends androidx.fragment.app.Fragment {
                         img.setImageResource(R.drawable.animated_to_circle);
                         Drawable imgDrawable = img.getDrawable();
                         ((Animatable) imgDrawable).start();
-                        checkWin(board, finalI, finalJ);
+                        boolean over = checkWin(board, finalI, finalJ);
+                        // Player 2 turn if nobody won yet
+                        if(!over) animateText(requireActivity().getString(R.string.player_two_turn), result);
+                        else if (act instanceof MainActivity) ((MainActivity) act).vibrate();
                     }
                     else {
                         // Vibrate
@@ -105,8 +111,9 @@ public class Game extends androidx.fragment.app.Fragment {
                         Drawable imgDrawable = img.getDrawable();
                         ((Animatable) imgDrawable).start();
                         boolean over = checkWin(board, finalI, finalJ);
-                        // Player 1 turn if nobody has still won
+                        // Player 1 turn if nobody won yet
                         if(!over) animateText(requireActivity().getString(R.string.player_one_turn), result);
+                        else if (act instanceof MainActivity) ((MainActivity) act).vibrate();
                     }
                 });
             }
@@ -114,42 +121,51 @@ public class Game extends androidx.fragment.app.Fragment {
 
     }
 
+    // Check if there's a winner or a draw
     private boolean checkWin(ImageView[][] board, int row, int column) {
         int newValue = boardValues[row][column];
         int tableSize = boardValues[0].length;
 
         // Check column
         for(int i = 0; i < tableSize; i++){
-            if(boardValues[column][i] != newValue) break;
+            if(boardValues[row][i] != newValue) break;
             if(i == tableSize - 1) {
                 declareWinner(newValue);
+                blinkBoard(board);
+                disableBoard(board);
                 return true;
             }
         }
         // Check row
-        for(int i = 0; i < tableSize; i++){
-            if(boardValues[i][row] != newValue) break;
+        for(int i = 0; i < tableSize; i++) {
+            if(boardValues[i][column] != newValue) break;
             if(i == tableSize - 1) {
                 declareWinner(newValue);
+                blinkBoard(board);
+                disableBoard(board);
                 return true;
             }
         }
         // Check diagonal
         if(row == column) {
-            for(int i = 0; i < tableSize; i++){
+            for(int i = 0; i < tableSize; i++) {
                 if(boardValues[i][i] != newValue) break;
                 if(i == tableSize - 1) {
                     declareWinner(newValue);
+                    blinkBoard(board);
+                    disableBoard(board);
                     return true;
                 }
             }
         }
         // Check anti diagonal
-        if(row + column == tableSize - 1){
-            for(int i = 0; i < tableSize; i++){
+        if(row + column == tableSize - 1) {
+            for(int i = 0; i < tableSize; i++) {
                 if(boardValues[i][(tableSize - 1) - i] != newValue) break;
                 if(i == tableSize - 1) {
                     declareWinner(newValue);
+                    blinkBoard(board);
+                    disableBoard(board);
                     return true;
                 }
             }
@@ -160,39 +176,84 @@ public class Game extends androidx.fragment.app.Fragment {
             }
         }
         declareDraw();
+        blinkBoard(board);
         return true;
     }
 
+    // Reinitialize the game, the texts and the data structures
     private void newGame(ImageView[][] board) {
-        for (int i = 0; i < board[0].length; i++) {
-            for (int j = 0; j < board[0].length; j++) {
-                String id = "i" + i + j;
-                int resId = getResources().getIdentifier(id, "id", requireActivity().getPackageName());
-                board[i][j] = requireView().findViewById(resId);
-                board[i][j].setImageDrawable(null);
-                boardValues[i][j] = 0;
-            }
-        }
-
+        // Reset and blink the board to get the click actions back
+        blinkAndResetBoard(board);
         // Restore the default placeholder
         TextView result = requireView().findViewById(R.id.resultGame);
         animateText(requireActivity().getString(R.string.result_placeholder), result);
     }
 
+    // Highlight the squares where the winning set is
+    private void blinkBoard(ImageView[][] views) {
+            // Create the animations
+            final Animation animIn = new AlphaAnimation(1.0f, 0.0f);
+            animIn.setDuration(550);
+            final Animation animOut = new AlphaAnimation(0.0f, 1.0f);
+            animOut.setDuration(550);
+            for (int i = 0; i < views[0].length; i++) {
+                for (ImageView view : views[i]) {
+                    view.startAnimation(animIn);
+                    // Delay the execution
+                    requireView().postDelayed(() -> {
+                        view.setSelected(true);
+                        view.startAnimation(animOut);
+                    }, 550);
+                }
+            }
+    }
+
+    // Same as above, but also reset the board touch actions and images
+    private void blinkAndResetBoard(ImageView[][] views) {
+        // Create the animations
+        final Animation animIn = new AlphaAnimation(1.0f, 0.0f);
+        animIn.setDuration(550);
+        final Animation animOut = new AlphaAnimation(0.0f, 1.0f);
+        animOut.setDuration(550);
+        for (int i = 0; i < views[0].length; i++) {
+            for (ImageView view : views[i]) {
+                view.startAnimation(animIn);
+                // Delay the execution
+                requireView().postDelayed(() -> {
+                    view.setSelected(true);
+                    setBoard(requireView(), board);
+                    view.startAnimation(animOut);
+                }, 550);
+            }
+        }
+    }
+
+    // Disable every touch action on the board, when the game is over
+    private void disableBoard(ImageView[][] board) {
+        for (int i = 0; i < board[0].length; i++) {
+            for (ImageView view : board[i]) {
+                view.setOnClickListener(null);
+            }
+        }
+    }
+
+    // Declare the winner setting the proper text
     private void declareWinner(int playerMove) {
         String oneWins = requireActivity().getString(R.string.player_one_wins);
         String twoWins = requireActivity().getString(R.string.player_two_wins);
         TextView result = requireActivity().findViewById(R.id.resultGame);
-        if (playerMove == 1) animateText(oneWins, result);
-        else animateText(twoWins, result);
+        if (playerMove == 1) animateText(twoWins, result);
+        else animateText(oneWins, result);
     }
 
+    // Declare a draw setting the proper text
     private void declareDraw() {
         String draw = requireActivity().getString(R.string.draw);
         TextView result = requireActivity().findViewById(R.id.resultGame);
         animateText(draw, result);
     }
 
+    // Animate the text to disappear and reappear smoothly
     private void animateText(String text, TextView tw) {
         // Create the animations
         final Animation animIn = new AlphaAnimation(1.0f, 0.0f);
