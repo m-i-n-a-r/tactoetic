@@ -4,6 +4,12 @@
 
     <!-- Game management -->
     <string name="new_game">New game</string>
+    <string name="result_placeholder">The first player can start!</string>
+    <string name="player_one_turn">Player one turn</string>
+    <string name="player_two_turn">Player two turn</string>
+    <string name="player_one_wins">Player one wins!</string>
+    <string name="player_two_wins">Player two wins!</string>
+    <string name="draw">Draw!</string>
 
     <!-- Settings -->
     <string name="app_behavior">App behavior</string>

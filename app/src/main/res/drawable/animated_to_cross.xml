@@ -17,9 +17,9 @@
                 <path
                     android:name="path"
                     android:pathData="M 12 12.455 C 11.879 12.455 11.764 12.407 11.679 12.321 C 11.593 12.236 11.545 12.121 11.545 12 C 11.545 11.879 11.593 11.764 11.679 11.679 C 11.764 11.593 11.879 11.545 12 11.545 C 12.121 11.545 12.236 11.593 12.321 11.679 C 12.407 11.764 12.455 11.879 12.455 12 C 12.455 12.121 12.407 12.236 12.321 12.321 C 12.236 12.407 12.121 12.455 12 12.455 M 12 11.432 C 11.849 11.432 11.705 11.492 11.598 11.598 C 11.492 11.705 11.432 11.849 11.432 12 C 11.432 12.151 11.492 12.295 11.598 12.402 C 11.705 12.508 11.849 12.568 12 12.568 C 12.151 12.568 12.295 12.508 12.402 12.402 C 12.508 12.295 12.568 12.151 12.568 12 C 12.568 11.849 12.508 11.705 12.402 11.598 C 12.295 11.492 12.151 11.432 12 11.432 Z"
-                    android:fillColor="#ffffff"
+                    android:fillColor="@color/goodGray"
                     android:fillAlpha="0"
-                    android:strokeColor="#ff0000"
+                    android:strokeColor="?colorAccent"
                     android:strokeAlpha="0.5"/>
             </group>
         </vector>
@@ -52,8 +52,8 @@
                 <objectAnimator
                     android:propertyName="fillColor"
                     android:duration="1100"
-                    android:valueFrom="#ffffff"
-                    android:valueTo="#ff0000"
+                    android:valueFrom="@color/goodGray"
+                    android:valueTo="?colorAccent"
                     android:valueType="colorType"
                     android:interpolator="@android:interpolator/fast_out_slow_in"/>
             </set>

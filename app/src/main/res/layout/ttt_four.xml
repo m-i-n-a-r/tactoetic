@@ -9,131 +9,131 @@
     android:rowCount="4" >
 
     <ImageView
+        android:id="@+id/i00"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_columnWeight="1" />
 
     <ImageView
+        android:id="@+id/i01"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i02"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i03"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i10"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i11"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i12"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i13"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i20"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i21"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i22"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i23"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i30"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i31"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i32"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
     <ImageView
+        android:id="@+id/i33"
         android:layout_margin="4dp"
         android:background="@color/goodGrayTranslucent"
         android:contentDescription="@string/app_name"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:tint="@color/colorAccent" />
+        android:layout_rowWeight="1" />
 
 </GridLayout>
