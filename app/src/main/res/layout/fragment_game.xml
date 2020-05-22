@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/new_game"
-            android:textColor="?colorAccent"
+            android:textColor="?android:colorBackground"
             android:tint="?colorAccent"
             android:layout_marginTop="64dp"
             android:contentDescription="@string/new_game"
@@ -67,7 +67,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/settingsBtn"
             app:layout_constraintTop_toBottomOf="@id/tttSection"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.MaterialComponents.Button"
             app:rippleColor="?colorAccent" />
 
         <Button
@@ -76,14 +76,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/settings"
-            android:textColor="?android:colorBackground"
+            android:textColor="?colorAccent"
             android:tint="?colorAccent"
             android:contentDescription="@string/settings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/newGameBtn"
-            style="@style/Widget.MaterialComponents.Button"
+            app:icon="@drawable/ic_settings_24dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             app:rippleColor="?colorAccent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
