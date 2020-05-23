@@ -1,11 +1,13 @@
 package com.minar.tactoetic;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.navigation.Navigation;
 
 import android.preference.PreferenceManager;
@@ -23,10 +25,6 @@ public class Game extends androidx.fragment.app.Fragment {
     private int turnNumber = 1;
     private ImageView[][] board;
     private int[][] boardValues;
-
-    public Game() {
-        // Required empty public constructor
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,13 +69,18 @@ public class Game extends androidx.fragment.app.Fragment {
 
     // Set the board in a parametric way and manage the click actions
     private void setBoard(View v, ImageView[][] board) {
+        Activity act = getActivity();
         TextView result = v.findViewById(R.id.resultGame);
         for (int i = 0; i < board[0].length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 String id = "i" + i + j;
                 int resId = getResources().getIdentifier(id, "id", requireActivity().getPackageName());
                 board[i][j] = v.findViewById(resId);
-                board[i][j].setImageDrawable(null);
+                board[i][j].setImageResource(R.drawable.animated_to_circle);
+                // Get the accent and set the correct color filter
+                assert act != null;
+                int accent = ((MainActivity) act).getAccent(requireContext());
+                board[i][j].setColorFilter(accent);
                 boardValues[i][j] = 0;
                 int finalJ = j;
                 int finalI = i;
@@ -87,8 +90,7 @@ public class Game extends androidx.fragment.app.Fragment {
                     board[finalI][finalJ].setOnClickListener(null);
                     if(turnNumber % 2 == 0) {
                         // Vibrate
-                        Activity act = getActivity();
-                        if (act instanceof MainActivity) ((MainActivity) act).vibrate();
+                        ((MainActivity) act).vibrate();
                         // Update the board
                         boardValues[finalI][finalJ] = -1;
                         ImageView img = (ImageView)view;
@@ -98,12 +100,11 @@ public class Game extends androidx.fragment.app.Fragment {
                         boolean over = checkWin(board, finalI, finalJ);
                         // Player 2 turn if nobody won yet
                         if(!over) animateText(requireActivity().getString(R.string.player_two_turn), result);
-                        else if (act instanceof MainActivity) ((MainActivity) act).vibrate();
+                        else ((MainActivity) act).vibrate();
                     }
                     else {
                         // Vibrate
-                        Activity act = getActivity();
-                        if (act instanceof MainActivity) ((MainActivity) act).vibrate();
+                        ((MainActivity) act).vibrate();
                         // Update the board
                         boardValues[finalI][finalJ] = 1;
                         ImageView img = (ImageView)view;
@@ -113,7 +114,7 @@ public class Game extends androidx.fragment.app.Fragment {
                         boolean over = checkWin(board, finalI, finalJ);
                         // Player 1 turn if nobody won yet
                         if(!over) animateText(requireActivity().getString(R.string.player_one_turn), result);
-                        else if (act instanceof MainActivity) ((MainActivity) act).vibrate();
+                        else ((MainActivity) act).vibrate();
                     }
                 });
             }
@@ -125,23 +126,26 @@ public class Game extends androidx.fragment.app.Fragment {
     private boolean checkWin(ImageView[][] board, int row, int column) {
         int newValue = boardValues[row][column];
         int tableSize = boardValues[0].length;
+        ImageView[] moves = new ImageView[tableSize];
 
         // Check column
         for(int i = 0; i < tableSize; i++){
+            moves[i] = board[row][i];
             if(boardValues[row][i] != newValue) break;
             if(i == tableSize - 1) {
+                highlightMove(moves);
                 declareWinner(newValue);
-                blinkBoard(board);
                 disableBoard(board);
                 return true;
             }
         }
         // Check row
         for(int i = 0; i < tableSize; i++) {
+            moves[i] = board[i][column];
             if(boardValues[i][column] != newValue) break;
             if(i == tableSize - 1) {
+                highlightMove(moves);
                 declareWinner(newValue);
-                blinkBoard(board);
                 disableBoard(board);
                 return true;
             }
@@ -149,10 +153,11 @@ public class Game extends androidx.fragment.app.Fragment {
         // Check diagonal
         if(row == column) {
             for(int i = 0; i < tableSize; i++) {
+                moves[i] = board[i][i];
                 if(boardValues[i][i] != newValue) break;
                 if(i == tableSize - 1) {
+                    highlightMove(moves);
                     declareWinner(newValue);
-                    blinkBoard(board);
                     disableBoard(board);
                     return true;
                 }
@@ -161,10 +166,11 @@ public class Game extends androidx.fragment.app.Fragment {
         // Check anti diagonal
         if(row + column == tableSize - 1) {
             for(int i = 0; i < tableSize; i++) {
+                moves[i] = board[i][(tableSize - 1) - i];
                 if(boardValues[i][(tableSize - 1) - i] != newValue) break;
                 if(i == tableSize - 1) {
+                    highlightMove(moves);
                     declareWinner(newValue);
-                    blinkBoard(board);
                     disableBoard(board);
                     return true;
                 }
@@ -268,5 +274,22 @@ public class Game extends androidx.fragment.app.Fragment {
             tw.setSelected(true);
             tw.startAnimation(animOut);
         }, 550);
+    }
+
+    // Highlight the winning moves shifting them to white or black depending on the theme
+    private void highlightMove(ImageView[] moves) {
+        if (moves.length == 0) return;
+        Activity act = getActivity();
+        assert act != null;
+        int accent = ((MainActivity) act).getAccent(requireContext());
+        for (ImageView view : moves) {
+            // Animate from the current accent color to white
+            ValueAnimator anim = ValueAnimator.ofArgb(accent, requireActivity().getColor(R.color.goodGray));
+            anim.addUpdateListener(animation -> view.setColorFilter(requireActivity().getColor(R.color.goodGray)));
+
+            anim.setDuration(1000);
+            anim.setInterpolator(new FastOutSlowInInterpolator());
+            anim.start();
+        }
     }
 }

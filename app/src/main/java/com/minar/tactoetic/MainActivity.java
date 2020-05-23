@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.util.TypedValue;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Some utility functions, used from every fragment connected to this activity
 
+    // Simply vibrate for a short time
     public void vibrate() {
         SharedPreferences sp = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
         Vibrator vib = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
@@ -49,5 +51,12 @@ public class MainActivity extends AppCompatActivity {
             // Vibrate if the vibration in options is set to on
             // noinspection ConstantConditions
             vib.vibrate(30);
+    }
+
+    // Programmatically get the accent color to use it in color transitions
+    public int getAccent(Context context) {
+        final TypedValue value = new TypedValue();
+        context.getTheme ().resolveAttribute (R.attr.colorAccent, value, true);
+        return value.data;
     }
 }
