@@ -23,6 +23,7 @@
     <string name="three_by_three">Three by three</string>
     <string name="four_by_four">Four by four</string>
     <string name="five_by_five">Five by five</string>
+    <string name="six_by_six">Six by six</string>
     <string name="accent_description">Change the default accent color</string>
     <string name="accent_name">Accent color</string>
     <string name="theme_description">Use a dark, light or automatic app theme</string>

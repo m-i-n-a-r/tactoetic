@@ -44,6 +44,11 @@ public class Game extends androidx.fragment.app.Fragment {
                 boardValues = new int[5][5];
                 inflater.inflate(R.layout.ttt_five, gridSection);
                 break;
+            case 6:
+                board = new ImageView[6][6];
+                boardValues = new int[6][6];
+                inflater.inflate(R.layout.ttt_six, gridSection);
+                break;
             default:
                 board = new ImageView[3][3];
                 boardValues = new int[3][3];
@@ -190,6 +195,7 @@ public class Game extends androidx.fragment.app.Fragment {
     private void newGame(ImageView[][] board) {
         // Reset and blink the board to get the click actions back
         blinkAndResetBoard(board);
+        turnNumber = 1;
         // Restore the default placeholder
         TextView result = requireView().findViewById(R.id.resultGame);
         animateText(requireActivity().getString(R.string.result_placeholder), result);

@@ -43,12 +43,13 @@
         <item>@string/three_by_three</item>
         <item>@string/four_by_four</item>
         <item>@string/five_by_five</item>
+        <item>@string/six_by_six</item>
     </string-array>
 
     <string-array name="gridSizeValues">
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
-
 </resources>
